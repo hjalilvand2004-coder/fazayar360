@@ -1,0 +1,2 @@
+postgresql+psycopg2://postgres:@/postgres?host=/home/z/my-project/.pgdata-fazayar
+HOLDING

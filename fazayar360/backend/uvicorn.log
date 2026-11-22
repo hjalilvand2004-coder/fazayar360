@@ -1,0 +1,66 @@
+2026-11-22 20:13:19,604 fazayar INFO SPA از /home/z/my-project/fazayar360/frontend/dist سرو می‌شود
+INFO:     Started server process [2024]
+INFO:     Waiting for application startup.
+2026-11-22 20:13:19,778 fazayar INFO داده نمونه پایه ساخته شد
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8095 (Press CTRL+C to quit)
+/home/z/.venv/lib/python3.12/site-packages/jwt/api_jwt.py:147: InsecureKeyLengthWarning: The HMAC key is 23 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2.
+  return self._jws.encode(
+INFO:     127.0.0.1:55928 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+/home/z/.venv/lib/python3.12/site-packages/jwt/api_jwt.py:365: InsecureKeyLengthWarning: The HMAC key is 23 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2.
+  decoded = self.decode_complete(
+INFO:     127.0.0.1:55928 - "GET /api/v1/structure/campuses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "GET /api/v1/spaces?size=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "GET /api/v1/spaces/89ece63d-144e-4c49-ba37-ab6b86929104 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "GET /api/v1/spaces?size=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "GET /api/v1/features HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "POST /api/v1/availability/search HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "POST /api/v1/assistant/search HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "POST /api/v1/booking-requests HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55928 - "POST /api/v1/booking-requests/eb9a2716-346e-479e-98d1-660932676974/submit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "POST /api/v1/booking-requests/eb9a2716-346e-479e-98d1-660932676974/approve HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "POST /api/v1/booking-requests HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55928 - "POST /api/v1/booking-requests/166bbbbb-655d-4214-83b6-07e5dc2eebf8/submit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "POST /api/v1/booking-requests/166bbbbb-655d-4214-83b6-07e5dc2eebf8/approve HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:55928 - "POST /api/v1/booking-requests HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55928 - "POST /api/v1/booking-requests HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55928 - "POST /api/v1/booking-requests/3284d850-a44b-48bb-a80f-d9530b2b5571/submit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "POST /api/v1/booking-requests/fd2ce4dc-2400-4066-addf-34cc7f60e051/submit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55934 - "POST /api/v1/booking-requests/fd2ce4dc-2400-4066-addf-34cc7f60e051/approve HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:55930 - "POST /api/v1/booking-requests/3284d850-a44b-48bb-a80f-d9530b2b5571/approve HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "POST /api/v1/booking-requests HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55928 - "POST /api/v1/booking-requests/d5730107-0323-4d5a-9358-b1cae03484a8/submit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "POST /api/v1/booking-requests/d5730107-0323-4d5a-9358-b1cae03484a8/approve HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:55928 - "POST /api/v1/maintenance-blocks HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55928 - "GET /api/v1/maintenance-blocks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "POST /api/v1/availability/search HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "GET /api/v1/spaces/a7fe58fb-88d8-42b4-b120-0b3fcef236f3/calendar?date_from=2026-11-28&date_to=2026-12-05 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "GET /api/v1/spaces/a7fe58fb-88d8-42b4-b120-0b3fcef236f3/availability?start_at=2026-11-28T15%3A00%3A00%2B03%3A30&end_at=2026-11-28T17%3A00%3A00%2B03%3A30 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "GET /api/v1/analytics/utilization?date_from=2020-01-01&date_to=2030-12-31&group_by=building HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "GET /api/v1/analytics/heatmap?date_from=2020-01-01&date_to=2030-12-31 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "GET /api/v1/analytics/quality HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "GET /api/v1/analytics/action-center HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "POST /api/v1/optimization-runs HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55928 - "GET /api/v1/optimization-runs/be44d4e7-33cd-4537-8be6-ced3c92393de HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "GET /api/v1/optimization-runs/be44d4e7-33cd-4537-8be6-ced3c92393de HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "GET /api/v1/integrations/references?entity_type=course_offer HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "POST /api/v1/integrations/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "POST /api/v1/integrations/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "GET /api/v1/public/spaces/1b28f33316784d90 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "POST /api/v1/public/spaces/1b28f33316784d90/report-issue HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55928 - "GET /api/v1/admin/audit-logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55928 - "POST /api/v1/booking-requests/3284d850-a44b-48bb-a80f-d9530b2b5571/reject HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:55928 - "GET /api/v1/spaces/nonexistent-id HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:42510 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42520 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38064 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38072 - "GET /api/v1/booking-requests?size=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38076 - "GET /api/v1/spaces?q=SCI-213 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38078 - "POST /api/v1/booking-requests/occurrences/39e1506d-0d32-4064-9202-17c5bc426ff2/move HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55326 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55342 - "GET /api/v1/booking-requests?size=100 HTTP/1.1" 200 OK

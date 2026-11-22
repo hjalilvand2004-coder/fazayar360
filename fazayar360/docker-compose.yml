@@ -1,0 +1,41 @@
+name: fazayar360
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: fazayar
+      POSTGRES_PASSWORD: fazayar
+      POSTGRES_DB: fazayar
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fazayar -d fazayar"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  app:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "8095:8095"          # آدرس نهایی: http://188.212.96.235:8095
+    environment:
+      FAZAYAR_DATABASE_URL: postgresql+psycopg2://fazayar:fazayar@db:5432/fazayar
+      FAZAYAR_JWT_SECRET: ${FAZAYAR_JWT_SECRET:-change-me-in-production-please}
+      FAZAYAR_SEED_ON_START: "true"
+      FAZAYAR_DEMO_MODE: "true"
+      FAZAYAR_DIST_DIR: /srv/frontend/dist
+      FAZAYAR_UPLOAD_DIR: /srv/data/uploads
+      FAZAYAR_TIMEZONE: Asia/Tehran
+      FAZAYAR_PAYEHTAR_BASE_URL: ${FAZAYAR_PAYEHTAR_BASE_URL:-}
+    volumes:
+      - uploads:/srv/data/uploads
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  pgdata:
+  uploads:
