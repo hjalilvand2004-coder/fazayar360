@@ -6,7 +6,7 @@ import zipfile
 BUNDLE = "/home/z/my-project/portable-windows-staging/bundle/fazayar360-portable-windows-x64"
 DIST_SRC = "/home/z/my-project/fazayar360/frontend/dist"
 BUILD = os.path.dirname(BUNDLE)
-OUT = "/home/z/my-project/download/fazayar360-portable-windows-x64-v1.1.1.zip"
+OUT = "/home/z/my-project/download/fazayar360-portable-windows-x64-v1.1.2.zip"
 
 dst = os.path.join(BUNDLE, "app", "frontend-dist")
 shutil.rmtree(dst, ignore_errors=True)

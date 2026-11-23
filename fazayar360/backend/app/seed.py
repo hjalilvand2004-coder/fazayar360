@@ -1,8 +1,8 @@
 """داده نمونه واقع‌نما برای راه‌اندازی اولیه (فقط وقتی پایگاه داده خالی است)."""
 import json
 import uuid
-from datetime import date, datetime, time, timedelta
-from zoneinfo import ZoneInfo
+from datetime import date, datetime, time, timedelta, timezone
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from sqlalchemy.orm import Session
 
@@ -12,7 +12,11 @@ from .models import (AvailabilityRule, Building, Campus, EquipmentAsset, Equipme
                       EquipmentType, Feature, Floor, Space, SpaceEquipment, SpaceFeature,
                       SpaceLayout, SpaceStatus, SpaceType, User)
 
-tz = ZoneInfo(settings.timezone)
+try:
+    tz = ZoneInfo(settings.timezone)
+except ZoneInfoNotFoundError:
+    # ویندوز بدون بستهٔ tzdata — بازگشت به آفست ثابت تهران (+03:30)
+    tz = timezone(timedelta(hours=3, minutes=30))
 
 
 def seed_if_empty(db: Session) -> bool:

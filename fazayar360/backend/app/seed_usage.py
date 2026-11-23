@@ -1,8 +1,8 @@
 """داده مصرفی نمونه: درخواست‌های رزرو در وضعیت‌های مختلف، انسداد تعمیراتی، شواهد استفاده و مراجع همگام‌شده."""
 import json
 import uuid
-from datetime import datetime, timedelta
-from zoneinfo import ZoneInfo
+from datetime import datetime, timedelta, timezone
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from sqlalchemy.orm import Session
 
@@ -12,7 +12,11 @@ from .models import (BookingOccurrence, MaintenanceBlock, OccurrenceStatus, Requ
 from .services import booking as booking_svc
 from .services import sync as sync_svc
 
-tz = ZoneInfo(settings.timezone)
+try:
+    tz = ZoneInfo(settings.timezone)
+except ZoneInfoNotFoundError:
+    # ویندوز بدون بستهٔ tzdata — بازگشت به آفست ثابت تهران (+03:30)
+    tz = timezone(timedelta(hours=3, minutes=30))
 
 
 def _this_saturday(today) -> "datetime.date":
