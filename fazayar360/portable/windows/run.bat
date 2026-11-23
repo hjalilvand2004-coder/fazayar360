@@ -1,4 +1,4 @@
-﻿@echo off
+@echo off
 chcp 65001 >nul
 title Fazayar360 - Portable
 setlocal
@@ -9,6 +9,8 @@ set "PGDATA=%ROOT%data\pgdata"
 set "PGPORT=8098"
 set "APPPORT=8095"
 set "PGPASSWORD=fazayar"
+set "PYTHONUTF8=1"
+set "PYTHONIOENCODING=utf-8"
 
 if not exist "%PY%" ( echo python-embed not found & pause & exit /b 1 )
 if not exist "%PGBIN%\initdb.exe" ( echo pgsql binaries not found & pause & exit /b 1 )
@@ -45,7 +47,7 @@ set "FAZAYAR_DIST_DIR=%ROOT%app\frontend-dist"
 set "FAZAYAR_UPLOAD_DIR=%ROOT%data\uploads"
 set "FAZAYAR_JWT_SECRET=change-me-in-production"
 
-start "" cmd /c "timeout /t 5 >nul & start http://localhost:%APPPORT%"
+start "" cmd /c "timeout /t 8 >nul & start http://localhost:%APPPORT%"
 cd /d "%ROOT%app"
 "%PY%" -m uvicorn app.main:app --host 0.0.0.0 --port %APPPORT%
 pause

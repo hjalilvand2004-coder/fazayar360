@@ -61,7 +61,7 @@ export default function Layout() {
           ))}
         </nav>
         <div className="px-5 py-4 border-t border-white/10 text-[10px] opacity-60">
-          نگارش ۱.۱.۰ · تم روز و شب
+          نگارش ۱.۱.۱ · تم روز و شب
         </div>
       </aside>
 
@@ -84,7 +84,7 @@ export default function Layout() {
           <Outlet />
         </main>
         <footer className="px-6 py-3 text-xs border-t" style={{ color: "var(--muted)", borderColor: "var(--border)" }}>
-          فضایار۳۶۰ — زیرسیستم مدیریت و بهینه‌سازی فضاهای آموزشی · نگارش ۱.۱.۰
+          فضایار۳۶۰ — زیرسیستم مدیریت و بهینه‌سازی فضاهای آموزشی · نگارش ۱.۱.۱
         </footer>
       </div>
     </div>

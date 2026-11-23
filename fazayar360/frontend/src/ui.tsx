@@ -94,7 +94,7 @@ export function Kpi({ title, value, hint, tone = "blue" }: {
   return (
     <div className={`card p-4 border-r-4 ${ring}`}>
       <div className="text-xs text-slate-500">{title}</div>
-      <div className="text-2xl font-bold text-[#172033] mt-1">{value}</div>
+      <div className="text-2xl font-bold text-[#172033] kpi-value mt-1">{value}</div>
       {hint && <div className="text-xs text-slate-400 mt-1">{hint}</div>}
     </div>
   );

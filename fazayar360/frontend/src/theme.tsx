@@ -15,7 +15,7 @@ function initial(): Theme {
 function apply(t: Theme) {
   document.documentElement.dataset.theme = t;
   const meta = document.querySelector('meta[name="theme-color"]');
-  if (meta) meta.setAttribute("content", t === "dark" ? "#0B1220" : "#F5F7FB");
+  if (meta) meta.setAttribute("content", t === "dark" ? "#0A0E23" : "#F5F7FB");
 }
 
 const Ctx = createContext<{ theme: Theme; toggle: () => void }>(null as any);

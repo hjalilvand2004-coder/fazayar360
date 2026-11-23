@@ -1,1 +1,0 @@
-/home/z/.venv/lib/python3.12/site-packages/pgserver/pginstall/bin/postgres "-D" "/home/z/my-project/.pgdata-fazayar" "-h" "" "-k" "/home/z/my-project/.pgdata-fazayar"

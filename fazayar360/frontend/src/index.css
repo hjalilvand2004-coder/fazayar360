@@ -34,29 +34,29 @@
   --glass: rgba(255, 255, 255, .82);
 }
 
-/* ─────────────────  توکن‌های تم شب ───────────────── */
+/* ─────────────────  توکن‌های تم شب — پالت فضایی مطابق تصویر مرجع ───────────────── */
 [data-theme="dark"] {
   color-scheme: dark;
-  --bg: #0B1220;
-  --surface: #111A2C;
-  --surface-2: #18233A;
-  --text: #E6EAF2;
-  --muted: #8A94A8;
-  --border: #24314D;
-  --primary: #5B8AF5;
-  --primary-hover: #6E97F7;
-  --primary-soft: #17294F;
-  --primary-ring: rgba(91, 138, 245, .4);
+  --bg: #0A0E23;
+  --surface: #121832;
+  --surface-2: #1A2144;
+  --text: #EAECF8;
+  --muted: #9AA3C7;
+  --border: rgba(255, 255, 255, .09);
+  --primary: #EC4899;
+  --primary-hover: #F472B6;
+  --primary-soft: rgba(236, 72, 153, .16);
+  --primary-ring: rgba(236, 72, 153, .35);
   --teal: #2DD4BF;
   --danger: #F87171;
   --danger-soft: rgba(248, 113, 113, .14);
   --ok: #34D399;
-  --sidebar: #0A101C;
-  --sidebar-text: #9AA6BD;
+  --sidebar: rgba(8, 11, 30, .66);
+  --sidebar-text: #A6AFCF;
   --sidebar-hover: rgba(255, 255, 255, .06);
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .35);
-  --shadow-md: 0 6px 20px rgba(0, 0, 0, .45);
-  --glass: rgba(11, 18, 32, .8);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .4);
+  --shadow-md: 0 12px 32px rgba(0, 0, 0, .5);
+  --glass: rgba(10, 14, 35, .6);
 }
 
 html { direction: rtl; }
@@ -159,6 +159,58 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 [data-theme="dark"] .hover\:bg-blue-50:hover { background: var(--primary-soft); }
 [data-theme="dark"] .hover\:border-blue-400:hover { border-color: var(--primary); }
 [data-theme="dark"] .divide-slate-200 > :not([hidden]) ~ :not([hidden]) { border-color: var(--border); }
+
+/* ─────────────  اجزای فضایی تم شب (مطابق تصویر مرجع)  ───────────── */
+
+/* پس‌زمینهٔ کهکشانی: هاله‌های سحابی + ماسهٔ ستاره‌ای ثابت */
+[data-theme="dark"] body {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(1000px 540px at 85% -8%, rgba(139, 92, 246, .16), transparent 62%),
+    radial-gradient(880px 520px at 4% 112%, rgba(45, 212, 191, .13), transparent 62%),
+    radial-gradient(760px 440px at 55% 120%, rgba(236, 72, 153, .09), transparent 62%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cg fill='%23fff'%3E%3Ccircle cx='22' cy='34' r='1' opacity='.75'/%3E%3Ccircle cx='88' cy='18' r='.8' opacity='.55'/%3E%3Ccircle cx='150' cy='62' r='1.1' opacity='.8'/%3E%3Ccircle cx='234' cy='30' r='.7' opacity='.5'/%3E%3Ccircle cx='58' cy='118' r='.9' opacity='.65'/%3E%3Ccircle cx='196' cy='128' r='1' opacity='.7'/%3E%3Ccircle cx='262' cy='96' r='.8' opacity='.5'/%3E%3Ccircle cx='120' cy='168' r='.7' opacity='.45'/%3E%3Ccircle cx='30' cy='212' r='1' opacity='.7'/%3E%3Ccircle cx='172' cy='236' r='.9' opacity='.6'/%3E%3Ccircle cx='248' cy='206' r='.8' opacity='.55'/%3E%3C/g%3E%3Cg%3E%3Ccircle cx='210' cy='66' r='1.8' fill='%2367E8F9' opacity='.9'/%3E%3Ccircle cx='66' cy='182' r='1.6' fill='%23F9A8D4' opacity='.85'/%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='520'%3E%3Cg fill='%23fff'%3E%3Ccircle cx='90' cy='80' r='1.6' opacity='.95'/%3E%3Ccircle cx='330' cy='180' r='1.3' opacity='.8'/%3E%3Ccircle cx='470' cy='60' r='1.2' opacity='.75'/%3E%3Ccircle cx='210' cy='330' r='1.5' opacity='.85'/%3E%3Ccircle cx='420' cy='420' r='1.3' opacity='.7'/%3E%3Ccircle cx='60' cy='460' r='1.2' opacity='.65'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
+}
+
+/* کارت‌های شیشه‌ای */
+[data-theme="dark"] .card {
+  background: rgba(18, 24, 50, .72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* نوار کناری شیشه‌ای + آیتم فعال صورتی→بنفش */
+[data-theme="dark"] .sidebar { border-inline-end: 1px solid rgba(255, 255, 255, .06); }
+[data-theme="dark"] .sidebar-item.active,
+[data-theme="dark"] .sidebar-item.active:hover {
+  background: linear-gradient(135deg, #EC4899, #8B5CF6);
+  box-shadow: 0 4px 16px rgba(236, 72, 153, .35);
+}
+
+/* دکمهٔ اصلی صورتی→بنفش مثل مرجع */
+[data-theme="dark"] .btn-primary { background: linear-gradient(135deg, #EC4899, #8B5CF6); box-shadow: 0 3px 14px rgba(236, 72, 153, .3); }
+[data-theme="dark"] .btn-primary:hover:not(:disabled) { background: linear-gradient(135deg, #F472B6, #9F67F8); }
+[data-theme="dark"] .btn-teal { background: linear-gradient(135deg, #2DD4BF, #3B82F6); }
+
+/* تیتر گرادیانی آبی‌بنفش‌صورتی */
+[data-theme="dark"] .grad-title {
+  background: linear-gradient(90deg, #93C5FD, #C084FC 48%, #F472B6);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* عدد شاخص‌ها با گرادیان صورتی */
+[data-theme="dark"] .kpi-value {
+  background: linear-gradient(90deg, #F9A8D4, #C084FC);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* مودال شیشه‌ای */
+[data-theme="dark"] .bg-white { background: rgba(18, 24, 50, .94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+
+/* اسکرول‌بار بنفش‌فام */
+[data-theme="dark"] ::-webkit-scrollbar-thumb { background: rgba(139, 92, 246, .35); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }

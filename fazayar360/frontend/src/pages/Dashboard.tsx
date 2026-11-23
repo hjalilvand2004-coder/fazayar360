@@ -45,7 +45,7 @@ export default function Dashboard() {
     <div className="space-y-6">
       {/* جست‌وجوی سریع / دستیار */}
       <section className="card p-5 bg-gradient-to-l from-blue-50 to-white">
-        <h2 className="font-bold text-[#172033]">دستیار «فضای مناسب پیدا کن»</h2>
+        <h2 className="font-bold text-[#172033] grad-title">دستیار «فضای مناسب پیدا کن»</h2>
         <p className="text-xs text-slate-500 mt-1">به زبان ساده بنویسید؛ مثلاً: «برای سه‌شنبه ساعت ۱۰، یک کلاس برای ۳۲ نفر با نمایشگر می‌خواهم»</p>
         <div className="mt-3 flex gap-2">
           <input id="quick-search" className="input" placeholder="مثال: فردا ساعت ۱۴ کارگاه برای ۲۵ نفر با ویدئوپروژکتور"
@@ -69,7 +69,7 @@ export default function Dashboard() {
 
       {/* مرکز اقدام */}
       <section>
-        <h2 className="font-bold text-[#172033] mb-2">مرکز اقدام</h2>
+        <h2 className="font-bold text-[#172033] grad-title mb-2">مرکز اقدام</h2>
         {alerts.data!.length === 0 ? (
           <div className="card"><EmptyState title="هشدار قابل اقدامی نیست" hint="همه چیز در وضعیت مطلوب است." icon="✅" /></div>
         ) : (

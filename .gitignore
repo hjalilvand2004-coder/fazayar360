@@ -1,2 +1,5 @@
 skills/
 node_modules/
+download/portable-windows-staging/
+.pgdata*/
+portable-windows-staging/
