@@ -16,8 +16,8 @@ tz = ZoneInfo(settings.timezone)
 
 
 def _this_saturday(today) -> "datetime.date":
-    # شنبه = weekday() == 5
-    delta = (5 - today.weekday()) % 7
+    # شنبه‌ی همین هفته (پس‌رو به شنبه): شنبه پایتون = weekday() == 5
+    delta = (today.weekday() - 5) % 7
     return today - timedelta(days=delta)
 
 
@@ -106,7 +106,7 @@ def seed_usage(db: Session) -> None:
         "title": "جلسه گروه پژوهشی پردازش سیگنال",
         "expected_attendees": 12,
         "requested_space_id": spaces["CONV-ROOM-A"].id,
-        "start_at": f"{day(-1, 6)}T10:00:00+03:30", "end_at": f"{day(-1, 6)}T12:00:00+03:30",
+        "start_at": f"{day(-1, 5)}T10:00:00+03:30", "end_at": f"{day(-1, 5)}T12:00:00+03:30",  # پنجشنبه هفته قبل
     }, professor)
     r6.status = RequestStatus.submitted.value
     booking_svc._add_action(db, r6.id, professor, "submit")

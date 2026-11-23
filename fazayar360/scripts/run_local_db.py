@@ -1,18 +1,23 @@
-"""اجرای محلی PostgreSQL با pgserver.
+"""اجرای محلی PostgreSQL با pgserver (بدون نیاز به نصب PostgreSQL در سیستم).
 
-حالت ۱: python run_local_db.py          → شروع سرور، چاپ DATABASE_URL و خروج
-حالت ۲: python run_local_db.py --hold   → سرور روشن می‌ماند تا فرایند زنده است
+استفاده:
+  python run_local_db.py [مسیر_داده] --hold
+  • مسیر_داده: دایرکتوری داده PostgreSQL (پیش‌فرض: /home/z/my-project/.pgdata-fazayar)
+  • --hold: فرایند زنده می‌ماند تا سرور روشن بماند
+خروجی: DATABASE_URL سازگار با SQLAlchemy روی stdout
 """
 import sys
 import time
 
 import pgserver
 
-DATA_DIR = "/home/z/my-project/.pgdata-fazayar"
+DEFAULT_DATA_DIR = "/home/z/my-project/.pgdata-fazayar"
 
 
 def main():
-    db = pgserver.get_server(DATA_DIR)
+    args = [a for a in sys.argv[1:] if a != "--hold"]
+    data_dir = args[0] if args else DEFAULT_DATA_DIR
+    db = pgserver.get_server(data_dir)
     uri = db.get_uri()
     sa_url = uri.replace("postgresql://", "postgresql+psycopg2://")
     print(sa_url, flush=True)

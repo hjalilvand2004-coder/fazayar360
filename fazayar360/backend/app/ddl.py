@@ -1,4 +1,13 @@
-"""مهاجرت‌های خاص PostgreSQL که create_all نمی‌سازد — شامل قید قطعی عدم هم‌پوشانی بازه زمانی."""
+"""مهاجرت‌های خاص PostgreSQL که create_all نمی‌سازد — شامل قید قطعی عدم هم‌پوشانی بازه زمانی.
+
+هر دستور جداگانه اجرا می‌شود؛ اگر افزونه/قید در محیط مقصد در دسترس نباشد (مثل برخی بسته‌های
+پرتیبل)، سامانه با خطای هشدار ادامه می‌دهد و جلوگیری از رزرو متعارض بر عهده قفل تراکنشی
+ردیف فضا در سرویس تأیید باقی می‌ماند.
+"""
+import logging
+
+log = logging.getLogger("fazayar.ddl")
+
 POSTGRES_EXTRAS = [
     "CREATE EXTENSION IF NOT EXISTS btree_gist",
     # مقدار پیش‌فرض زمان برای جدول کلیدهای idempotency (سازگار با نصب‌های قبلی)
@@ -26,4 +35,7 @@ def apply_postgres_extras(engine) -> None:
     from sqlalchemy import text
     with engine.begin() as conn:
         for stmt in POSTGRES_EXTRAS:
-            conn.execute(text(stmt))
+            try:
+                conn.execute(text(stmt))
+            except Exception as e:  # noqa: BLE001
+                log.warning("اجرای مهاجرت‌های دیتابیس کامل نشد (سامانه با کنترل تراکنشی ادامه می‌دهد): %s", e.__class__.__name__)

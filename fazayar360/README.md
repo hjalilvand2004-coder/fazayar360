@@ -162,3 +162,20 @@ fazayar360/
 ├── frontend/            → React+TS+Vite+Tailwind (src/pages, components)
 └── README.md
 ```
+
+---
+
+## ۸. نسخه پرتیبل (بدون نیاز به پایتون/پای‌چارم/PostgreSQL/Docker)
+
+از دارایی‌های ریلیز، فایل `fazayar360-portable-linux-x64-v1.0.0.tar.gz` را بگیرید:
+
+```bash
+tar xzf fazayar360-portable-linux-x64-v1.0.0.tar.gz
+cd fazayar360-portable && ./start.sh
+# → http://localhost:8095    (کاربر مدیر: admin / Faza360!)
+```
+
+این بسته شامل **مفسر مستقل Python 3.12**، همه وابستگی‌ها و **PostgreSQL توکار (pgserver)** است؛
+روی لینوکس x86_64 (glibc ≥ 2.17) بدون هیچ نصب پیش‌نیازی اجرا می‌شود. داده‌ها در پوشه‌ی `data/`
+باقی می‌مانند و با کپی کل پوشه قابل انتقال است. تغییر پورت: `FAZAYAR_PORT=8090 ./start.sh`
+در نبود افزونه btree_gist، سامانه با هشدار اجرا می‌شود و جلوگیری از تعارض به قفل تراکنشی سپرده می‌شود.

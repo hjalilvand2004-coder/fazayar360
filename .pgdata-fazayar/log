@@ -1,38 +1,6 @@
-2026-11-22 19:52:29.788 UTC [1122] LOG:  starting PostgreSQL 16.2 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 10.2.1 20210130 (Red Hat 10.2.1-11), 64-bit
-2026-11-22 19:52:29.788 UTC [1122] LOG:  listening on Unix socket "/home/z/my-project/.pgdata-fazayar/.s.PGSQL.5432"
-2026-11-22 19:52:29.789 UTC [1125] LOG:  database system was shut down at 2026-11-22 19:52:29 UTC
-2026-11-22 19:52:29.790 UTC [1122] LOG:  database system is ready to accept connections
-2026-11-22 19:52:29.895 UTC [1122] LOG:  received fast shutdown request
-2026-11-22 19:52:29.895 UTC [1122] LOG:  aborting any active transactions
-2026-11-22 19:52:29.895 UTC [1122] LOG:  background worker "logical replication launcher" (PID 1128) exited with exit code 1
-2026-11-22 19:52:29.895 UTC [1123] LOG:  shutting down
-2026-11-22 19:52:29.895 UTC [1123] LOG:  checkpoint starting: shutdown immediate
-2026-11-22 19:52:29.896 UTC [1123] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.001 s, total=0.001 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/14803F8, redo lsn=0/14803F8
-2026-11-22 19:52:29.898 UTC [1122] LOG:  database system is shut down
-2026-11-22 19:53:16.068 UTC [1147] LOG:  starting PostgreSQL 16.2 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 10.2.1 20210130 (Red Hat 10.2.1-11), 64-bit
-2026-11-22 19:53:16.068 UTC [1147] LOG:  listening on Unix socket "/home/z/my-project/.pgdata-fazayar/.s.PGSQL.5432"
-2026-11-22 19:53:16.068 UTC [1150] LOG:  database system was shut down at 2026-11-22 19:52:29 UTC
-2026-11-22 19:53:16.069 UTC [1147] LOG:  database system is ready to accept connections
-2026-11-22 19:53:24.650 UTC [1159] ERROR:  extension "btree_gist" is not available
-2026-11-22 19:53:24.650 UTC [1159] DETAIL:  Could not open extension control file "/home/z/.venv/lib/python3.12/site-packages/pgserver/pginstall/share/postgresql/extension/btree_gist.control": No such file or directory.
-2026-11-22 19:53:24.650 UTC [1159] HINT:  The extension must first be installed on the system where PostgreSQL is running.
-2026-11-22 19:53:24.650 UTC [1159] STATEMENT:  CREATE EXTENSION IF NOT EXISTS btree_gist
-2026-11-22 19:58:16.143 UTC [1148] LOG:  checkpoint starting: time
-2026-11-22 19:59:00.040 UTC [1449] ERROR:  null value in column "created_at" of relation "idempotency_keys" violates not-null constraint
-2026-11-22 19:59:00.040 UTC [1449] DETAIL:  Failing row contains (226b16f8-1b7b-4340-bd2e-bcdb19663ecb, /api/v1/booking-requests, null, null, REQ-202611-62C65B, null, dc21c861-1bd7-42ba-95f1-eb5cea63ad07).
-2026-11-22 19:59:00.040 UTC [1449] STATEMENT:  INSERT INTO idempotency_keys (key, endpoint, request_hash, response_status, response_body, created_at, id) VALUES ('226b16f8-1b7b-4340-bd2e-bcdb19663ecb', '/api/v1/booking-requests', NULL, NULL, 'REQ-202611-62C65B', NULL, 'dc21c861-1bd7-42ba-95f1-eb5cea63ad07'::uuid::UUID)
-2026-11-22 19:59:07.327 UTC [1148] LOG:  checkpoint complete: wrote 514 buffers (3.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=51.183 s, sync=0.001 s, total=51.184 s; sync files=340, longest=0.001 s, average=0.001 s; distance=3639 kB, estimate=3639 kB; lsn=0/1856D88, redo lsn=0/180E068
-2026-11-22 19:59:23.113 UTC [1468] ERROR:  null value in column "created_at" of relation "idempotency_keys" violates not-null constraint
-2026-11-22 19:59:23.113 UTC [1468] DETAIL:  Failing row contains (1a95eaad-ecca-4a59-8a69-6345e1c705b2, /api/v1/booking-requests, null, null, REQ-202611-879DEC, null, 3f7a9294-ed3b-4b95-aff9-606bbf482f8b).
-2026-11-22 19:59:23.113 UTC [1468] STATEMENT:  INSERT INTO idempotency_keys (key, endpoint, request_hash, response_status, response_body, id) VALUES ('1a95eaad-ecca-4a59-8a69-6345e1c705b2', '/api/v1/booking-requests', NULL, NULL, 'REQ-202611-879DEC', '3f7a9294-ed3b-4b95-aff9-606bbf482f8b'::uuid::UUID) RETURNING idempotency_keys.created_at
-2026-11-22 20:00:55.581 UTC [1514] ERROR:  conflicting key value violates exclusion constraint "excl_space_active_period"
-2026-11-22 20:00:55.581 UTC [1514] DETAIL:  Key (space_id, tstzrange(effective_start, effective_end, '[)'::text))=(8e81fe22-2490-4cca-a2f1-12e8add57885, ["2026-12-02 03:30:00+00","2026-12-03 17:30:00+00")) conflicts with existing key (space_id, tstzrange(effective_start, effective_end, '[)'::text))=(8e81fe22-2490-4cca-a2f1-12e8add57885, ["2026-12-02 03:30:00+00","2026-12-03 17:30:00+00")).
-2026-11-22 20:00:55.581 UTC [1514] STATEMENT:  INSERT INTO resource_allocations (space_id, request_id, occurrence_id, block_id, kind, status, scheduled_start, scheduled_end, effective_start, effective_end, created_by, note, id) VALUES ('8e81fe22-2490-4cca-a2f1-12e8add57885'::uuid::UUID, NULL::UUID, NULL::UUID, '9f9950bc-fe5d-4e14-bdb7-0e0564b97df2'::uuid::UUID, 'maintenance', 'active', '2026-12-02T07:00:00+03:30'::timestamptz, '2026-12-03T21:00:00+03:30'::timestamptz, '2026-12-02T07:00:00+03:30'::timestamptz, '2026-12-03T21:00:00+03:30'::timestamptz, '318a3e9b-7404-4fa1-88e4-59169f8708df'::uuid::UUID, 'نقاشی و تعمیر صندلی‌ها', 'e0f9a607-f4a4-4caa-b431-98aa5fccd915'::uuid::UUID) RETURNING resource_allocations.created_at, resource_allocations.updated_at
-2026-11-22 20:03:16.424 UTC [1148] LOG:  checkpoint starting: time
-2026-11-22 20:03:54.589 UTC [1148] LOG:  checkpoint complete: wrote 382 buffers (2.3%); 0 WAL file(s) added, 0 removed, 0 recycled; write=38.164 s, sync=0.001 s, total=38.165 s; sync files=188, longest=0.001 s, average=0.001 s; distance=2029 kB, estimate=3478 kB; lsn=0/1A097A0, redo lsn=0/1A09768
-2026-11-22 20:13:16.784 UTC [1148] LOG:  checkpoint starting: time
-2026-11-22 20:13:18.688 UTC [1148] LOG:  checkpoint complete: wrote 20 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.904 s, sync=0.001 s, total=1.904 s; sync files=15, longest=0.001 s, average=0.001 s; distance=60 kB, estimate=3136 kB; lsn=0/1A7CC68, redo lsn=0/1A187A0
-2026-11-22 20:14:40.412 UTC [1148] LOG:  checkpoint starting: immediate force wait
-2026-11-22 20:14:40.415 UTC [1148] LOG:  checkpoint complete: wrote 363 buffers (2.2%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.002 s, sync=0.001 s, total=0.004 s; sync files=180, longest=0.001 s, average=0.000 s; distance=7233 kB, estimate=7233 kB; lsn=0/2128CE8, redo lsn=0/2128CB0
-2026-11-22 20:19:40.505 UTC [1148] LOG:  checkpoint starting: time
-2026-11-22 20:19:43.712 UTC [1148] LOG:  checkpoint complete: wrote 33 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=3.206 s, sync=0.001 s, total=3.207 s; sync files=7, longest=0.001 s, average=0.001 s; distance=106 kB, estimate=6520 kB; lsn=0/21435B8, redo lsn=0/2143580
+2026-11-23 03:20:35.869 UTC [1460] LOG:  starting PostgreSQL 16.2 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 10.2.1 20210130 (Red Hat 10.2.1-11), 64-bit
+2026-11-23 03:20:35.869 UTC [1460] LOG:  listening on Unix socket "/home/z/my-project/.pgdata-fazayar/.s.PGSQL.5432"
+2026-11-23 03:20:35.870 UTC [1463] LOG:  database system was shut down at 2026-11-23 03:20:35 UTC
+2026-11-23 03:20:35.871 UTC [1460] LOG:  database system is ready to accept connections
+2026-11-23 03:25:35.955 UTC [1461] LOG:  checkpoint starting: time
+2026-11-23 03:26:25.537 UTC [1461] LOG:  checkpoint complete: wrote 499 buffers (3.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=49.581 s, sync=0.001 s, total=49.582 s; sync files=219, longest=0.001 s, average=0.001 s; distance=2631 kB, estimate=2631 kB; lsn=0/17122A8, redo lsn=0/1712270
