@@ -21,6 +21,18 @@ class Settings(BaseSettings):
     payehtar_base_url: str = ""       # آدرس API پایه‌یار۳۶۰ در استقرار واقعی
     dist_dir: str = ""                # مسیر dist فرانت‌اند (در Docker تنظیم می‌شود)
 
+    # ورود یکپارچه سازمانی (SSO/OIDC) — در استقرار واقعی پر می‌شود
+    sso_enabled: bool = False         # فعال‌سازی دکمهٔ ورود SSO در صفحهٔ لاگین
+    sso_issuer: str = ""              # نشانی صادرکننده؛ مثلا https://sso.uni.ac.ir/realms/uni
+    sso_client_id: str = ""
+    sso_client_secret: str = ""
+    sso_authorize_url: str = ""       # اگر خالی باشد از قالب استاندارد Keycloak ساخته می‌شود
+    sso_token_url: str = ""           # اگر خالی باشد از قالب استاندارد Keycloak ساخته می‌شود
+    sso_userinfo_url: str = ""        # اگر خالی باشد از قالب استاندارد Keycloak ساخته می‌شود
+    sso_scopes: str = "openid profile email"
+    sso_role_default: str = "student" # نقش کاربران تازهٔ SSO
+    sso_admin_email: str = ""         # این ایمیل نقش sys_admin می‌گیرد
+
     model_config = {"env_file": ".env", "env_prefix": "FAZAYAR_"}
 
 

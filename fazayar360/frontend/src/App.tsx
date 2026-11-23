@@ -15,6 +15,7 @@ import Analytics from "./pages/Analytics";
 import Optimizer from "./pages/Optimizer";
 import Admin from "./pages/Admin";
 import PublicSpace from "./pages/PublicSpace";
+import SsoCallback from "./pages/SsoCallback";
 import { Spinner } from "./ui";
 
 export default function App() {
@@ -23,8 +24,9 @@ export default function App() {
 
   return (
     <Routes>
-      {/* صفحه عمومی QR — بدون احراز هویت */}
+      {/* صفحات عمومی — بدون احراز هویت */}
       <Route path="/public/spaces/:slug" element={<PublicSpace />} />
+      <Route path="/sso/callback" element={<SsoCallback />} />
       {!user ? (
         <Route path="*" element={<Login />} />
       ) : (

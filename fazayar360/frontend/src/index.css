@@ -9,21 +9,156 @@
   --color-bg: #F5F7FB;
 }
 
+/* ─────────────────  توکن‌های تم روز ───────────────── */
+:root, [data-theme="light"] {
+  color-scheme: light;
+  --bg: #F5F7FB;
+  --surface: #FFFFFF;
+  --surface-2: #EEF2F9;
+  --text: #0F172A;
+  --muted: #64748B;
+  --border: #E2E8F0;
+  --primary: #3563E9;
+  --primary-hover: #2B51C9;
+  --primary-soft: #E8EEFE;
+  --primary-ring: rgba(53, 99, 233, .35);
+  --teal: #14B8A6;
+  --danger: #DC2626;
+  --danger-soft: #FEECEC;
+  --ok: #059669;
+  --sidebar: #0E1526;
+  --sidebar-text: #C4CDDC;
+  --sidebar-hover: rgba(255, 255, 255, .07);
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, .06), 0 1px 3px rgba(16, 24, 40, .08);
+  --shadow-md: 0 4px 14px rgba(16, 24, 40, .08);
+  --glass: rgba(255, 255, 255, .82);
+}
+
+/* ─────────────────  توکن‌های تم شب ───────────────── */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0B1220;
+  --surface: #111A2C;
+  --surface-2: #18233A;
+  --text: #E6EAF2;
+  --muted: #8A94A8;
+  --border: #24314D;
+  --primary: #5B8AF5;
+  --primary-hover: #6E97F7;
+  --primary-soft: #17294F;
+  --primary-ring: rgba(91, 138, 245, .4);
+  --teal: #2DD4BF;
+  --danger: #F87171;
+  --danger-soft: rgba(248, 113, 113, .14);
+  --ok: #34D399;
+  --sidebar: #0A101C;
+  --sidebar-text: #9AA6BD;
+  --sidebar-hover: rgba(255, 255, 255, .06);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .35);
+  --shadow-md: 0 6px 20px rgba(0, 0, 0, .45);
+  --glass: rgba(11, 18, 32, .8);
+}
+
 html { direction: rtl; }
-body { @apply bg-[#F5F7FB] text-slate-800; font-family: "Vazirmatn", Tahoma, sans-serif; }
 
-.status-chip { @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-medium border; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Vazirmatn", Tahoma, sans-serif;
+  transition: background-color .25s ease, color .25s ease;
+}
 
-.card { @apply bg-white rounded-2xl border border-slate-200 shadow-sm; }
+::selection { background: var(--primary-ring); }
 
-.btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-medium transition disabled:opacity-50 disabled:cursor-not-allowed; }
-.btn-primary { @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-medium transition disabled:opacity-50 disabled:cursor-not-allowed bg-[#3563E9] text-white hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2; }
-.btn-ghost { @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-medium transition disabled:opacity-50 disabled:cursor-not-allowed bg-white border border-slate-300 text-slate-700 hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500; }
-.btn-danger { @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-medium transition disabled:opacity-50 disabled:cursor-not-allowed bg-red-600 text-white hover:bg-red-700; }
-.btn-teal { @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-medium transition disabled:opacity-50 disabled:cursor-not-allowed bg-[#14B8A6] text-white hover:bg-teal-600; }
+::-webkit-scrollbar { width: 9px; height: 9px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: var(--muted); }
 
-.input { @apply w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500; }
-.label { @apply block text-xs font-medium text-slate-500 mb-1; }
+/* ─────────────────  اجزای پایه با متغیرهای تم ───────────────── */
+
+.status-chip { display: inline-flex; align-items: center; gap: 4px; border-radius: 999px;
+  padding: 2px 10px; font-size: 12px; font-weight: 500; border: 1px solid var(--border);
+  background: var(--surface-2); color: var(--text); }
+
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 18px;
+  box-shadow: var(--shadow-sm); transition: background-color .25s ease, border-color .25s ease; }
+
+.card-hover { transition: box-shadow .2s ease, transform .2s ease, background-color .25s ease, border-color .25s ease; }
+.card-hover:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+
+.btn, .btn-primary, .btn-ghost, .btn-danger, .btn-teal {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  border-radius: 12px; padding: 8px 16px; font-size: 13.5px; font-weight: 500;
+  transition: all .18s ease; cursor: pointer; }
+.btn:disabled, .btn-primary:disabled, .btn-ghost:disabled, .btn-danger:disabled, .btn-teal:disabled {
+  opacity: .5; cursor: not-allowed; }
+
+.btn { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); }
+.btn:hover:not(:disabled) { background: var(--primary-soft); border-color: var(--primary); }
+
+.btn-primary { background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  color: #fff; border: none; box-shadow: 0 2px 8px var(--primary-ring); }
+.btn-primary:hover:not(:disabled) { filter: brightness(1.06); transform: translateY(-1px);
+  box-shadow: 0 4px 14px var(--primary-ring); }
+
+.btn-ghost { background: var(--surface); border: 1px solid var(--border); color: var(--text); }
+.btn-ghost:hover:not(:disabled) { background: var(--surface-2); border-color: var(--primary); }
+
+.btn-danger { background: var(--danger); color: #fff; border: none; }
+.btn-danger:hover:not(:disabled) { filter: brightness(1.08); }
+
+.btn-teal { background: linear-gradient(135deg, var(--teal), #0EA5E9); color: #fff; border: none; }
+.btn-teal:hover:not(:disabled) { filter: brightness(1.06); }
+
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--primary); outline-offset: 1px; }
+
+.input { width: 100%; border-radius: 12px; border: 1px solid var(--border);
+  background: var(--surface); color: var(--text); padding: 9px 12px; font-size: 13.5px;
+  transition: border-color .18s ease, box-shadow .18s ease, background-color .25s ease; }
+.input::placeholder { color: var(--muted); opacity: .75; }
+.input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-ring); }
+
+.label { display: block; font-size: 12px; font-weight: 500; color: var(--muted); margin-bottom: 5px; }
+
+/* نوار کناری امروزی */
+.sidebar { background: var(--sidebar); color: var(--sidebar-text); }
+.sidebar-item { display: flex; align-items: center; gap: 9px; border-radius: 12px;
+  padding: 9px 13px; font-size: 13.5px; white-space: nowrap; color: var(--sidebar-text);
+  transition: background .15s ease, color .15s ease; }
+.sidebar-item:hover { background: var(--sidebar-hover); }
+.sidebar-item.active { background: linear-gradient(135deg, var(--primary), #1D4ED8);
+  color: #fff; font-weight: 600; box-shadow: 0 3px 10px var(--primary-ring); }
+.sidebar-item.active:hover { background: linear-gradient(135deg, var(--primary), #1D4ED8); }
+
+.topbar { background: var(--glass); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border); }
+
+.theme-toggle { display: inline-flex; align-items: center; justify-content: center;
+  height: 34px; width: 34px; border-radius: 10px; border: 1px solid var(--border);
+  background: var(--surface); cursor: pointer; font-size: 15px; line-height: 1;
+  transition: all .18s ease; color: var(--text); }
+.theme-toggle:hover { border-color: var(--primary); background: var(--primary-soft); }
+
+/* ─────────────────  ریمپ ابزارهای Tailwind در تم شب  ───────────────── */
+[data-theme="dark"] .bg-white { background: var(--surface); }
+[data-theme="dark"] .bg-slate-50, [data-theme="dark"] .bg-slate-100 { background: var(--surface-2); }
+[data-theme="dark"] .bg-slate-200 { background: var(--border); }
+[data-theme="dark"] .bg-\[\#F5F7FB\] { background: var(--bg); }
+[data-theme="dark"] .text-slate-900, [data-theme="dark"] .text-slate-800,
+[data-theme="dark"] .text-slate-700, [data-theme="dark"] .text-\[\#172033\] { color: var(--text); }
+[data-theme="dark"] .text-slate-600, [data-theme="dark"] .text-slate-500,
+[data-theme="dark"] .text-slate-400 { color: var(--muted); }
+[data-theme="dark"] .border-slate-200, [data-theme="dark"] .border-slate-300 { border-color: var(--border); }
+[data-theme="dark"] .bg-blue-50 { background: var(--primary-soft); }
+[data-theme="dark"] .bg-red-50 { background: var(--danger-soft); }
+[data-theme="dark"] .bg-green-50, [data-theme="dark"] .bg-emerald-50 { background: rgba(52, 211, 153, .12); }
+[data-theme="dark"] .bg-amber-50, [data-theme="dark"] .bg-yellow-50 { background: rgba(251, 191, 36, .12); }
+[data-theme="dark"] .hover\:bg-slate-50:hover, [data-theme="dark"] .hover\:bg-slate-100:hover { background: var(--surface-2); }
+[data-theme="dark"] .hover\:bg-blue-50:hover { background: var(--primary-soft); }
+[data-theme="dark"] .hover\:border-blue-400:hover { border-color: var(--primary); }
+[data-theme="dark"] .divide-slate-200 > :not([hidden]) ~ :not([hidden]) { border-color: var(--border); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
