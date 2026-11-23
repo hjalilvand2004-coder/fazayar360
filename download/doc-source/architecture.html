@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<style>
+  @font-face { font-family: 'Vazirmatn'; src: url('assets/fonts/Vazirmatn-Regular-CtGL0YI-.woff2') format('woff2'); font-weight: 400; }
+  @font-face { font-family: 'Vazirmatn'; src: url('assets/fonts/Vazirmatn-Medium-D86t5Axy.woff2') format('woff2'); font-weight: 500; }
+  @font-face { font-family: 'Vazirmatn'; src: url('assets/fonts/Vazirmatn-Bold-_OhAJEdh.woff2') format('woff2'); font-weight: 700; }
+  @font-face { font-family: 'Vazirmatn'; src: url('assets/fonts/Vazirmatn-Black-DA1YqYMq.woff2') format('woff2'); font-weight: 900; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #ffffff; }
+  body { width: 900px; font-family: 'Vazirmatn', sans-serif; color: #161514; }
+  .canvas { width: 900px; padding: 26px 30px 30px; background: #ffffff; }
+  .layer { border: 1.6px solid #cecbc3; border-radius: 12px; background: #f7f6f4; padding: 14px 18px; }
+  .layer.user { background: #f2f1ee; text-align: center; }
+  .layer-title { font-size: 20px; font-weight: 900; margin-bottom: 4px; }
+  .layer-sub { font-size: 14px; color: #797770; font-weight: 400; }
+  .layer.user .layer-sub { font-size: 15px; color: #5d5b55; }
+  .core { border-color: #88702a; background: #f7f5ef; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; max-width: 100%; }
+  .chip { flex: 1 1 auto; min-width: 96px; max-width: 100%; text-align: center; font-size: 15px; font-weight: 500;
+          background: #ffffff; border: 1px solid #cecbc3; border-radius: 8px; padding: 7px 10px; }
+  .chip b { color: #88702a; }
+  .connector { width: 100%; display: flex; justify-content: center; padding: 7px 0; }
+  .connector .stem { width: 2px; height: 16px; background: #a8a49a; }
+  .connector .head { width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent;
+                     border-top: 8px solid #a8a49a; margin-top: -1px; }
+  .connector.up .head { border-top: none; border-bottom: 8px solid #a8a49a; margin-top: 0; margin-bottom: -1px; }
+  .connector.up { flex-direction: column; align-items: center; }
+  .bottom { display: flex; flex-wrap: wrap; gap: 12px; max-width: 100%; }
+  .bottom .layer { flex: 1 1 240px; min-width: 220px; }
+  .db-title { color: #161514; }
+  .tag { display: inline-block; font-size: 12.5px; color: #88702a; border: 1px solid #88702a;
+         border-radius: 999px; padding: 1px 10px; margin-top: 8px; font-weight: 500; }
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div class="layer user">
+    <div class="layer-title">کاربران سامانه</div>
+    <div class="layer-sub">دانشجو، استاد، مدیر آموزش، مدیر آزمایشگاه، نگهداری و تعمیرات، رئیس دانشگاه، مدیر سامانه</div>
+  </div>
+
+  <div class="connector"><div class="stem"></div><div class="head"></div></div>
+
+  <div class="layer">
+    <div class="layer-title">رابط کاربری وب <span style="font-weight:400;font-size:15px;color:#797770;">— تک‌صفحه‌ای (SPA)</span></div>
+    <div class="layer-sub">React 19 + TypeScript + Vite — راست‌به‌چپ، فونت وزیرمتن، تقویم شمسی، نقشه طبقات، نمودارهای ECharts</div>
+    <div class="tag">frontend/dist — سرویس‌شده مستقیم توسط API</div>
+  </div>
+
+  <div class="connector"><div class="stem"></div><div class="head"></div></div>
+
+  <div class="layer core">
+    <div class="layer-title">هستهٔ API نسخه‌دار <span style="font-weight:400;font-size:15px;color:#797770;" dir="ltr">/api/v1</span></div>
+    <div class="layer-sub">FastAPI + SQLAlchemy 2.0 — احراز هویت JWT، کنترل دسترسی نقش‌محور (۸ نقش)، خطای ساختاریافته، محدودسازی نرخ، ممیزی</div>
+    <div class="chips">
+      <div class="chip">رزرو و <b>تکرارشونده</b></div>
+      <div class="chip"><b>تعارض</b> و ساعت‌های مجاز</div>
+      <div class="chip"><b>تحلیل</b> ظرفیت</div>
+      <div class="chip"><b>بهینه‌سازی</b> تخصیص</div>
+      <div class="chip"><b>دستیار</b> یافتن فضا</div>
+      <div class="chip">ساختار دانشگاه</div>
+      <div class="chip">همگام‌سازی پایه‌یار</div>
+      <div class="chip">فایل و QR</div>
+    </div>
+  </div>
+
+  <div class="connector"><div class="stem"></div><div class="head"></div></div>
+
+  <div class="bottom">
+    <div class="layer">
+      <div class="layer-title db-title">PostgreSQL 16</div>
+      <div class="layer-sub">قید EXCLUDE زمانی (btree_gist)، ۲۹ جدول، قفل تراکنشی ردیف‌ها</div>
+      <div class="tag">در نسخهٔ پرتیبل: pgserver توکار</div>
+    </div>
+    <div class="layer">
+      <div class="layer-title db-title">ذخیرهٔ فایل‌ها</div>
+      <div class="layer-sub">آپلود کنترل‌شده (نوع/حجم، نام تصادفی) — شواهد جلسات</div>
+    </div>
+    <div class="layer">
+      <div class="layer-title db-title">پایه‌یار۳۶۰</div>
+      <div class="layer-sub">رونوشت مرجع نسخه‌دار + رویداد تکرارپذیر + صف Outbox</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

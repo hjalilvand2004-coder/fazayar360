@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<title>سند فنی سامانه فضایار۳۶۰</title>
+<link rel="stylesheet" href="assets/fonts.css">
+<style>
+
+  @page { size: 794px 1123px; margin: 0; }
+  @page cover { @bottom-center { content: none; } }
+  @page toc   { @bottom-center { content: none; } }
+  @page bodypage {
+    margin: 54px 64px 52px;
+    @bottom-center {
+      content: counter(page);
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 11px; color: #797770;
+    }
+  }
+
+  :root {
+    --bg: #f4f4f3; --card: #efeeeb; --header-fill: #726745; --border: #e3e1dc;
+    --accent: #88702a; --text: #161514; --muted: #797770;
+  }
+  html, body {
+    margin: 0; padding: 0; width: 794px;
+    background: var(--bg); color: var(--text);
+    font-family: 'Vazirmatn', sans-serif;
+    font-size: 15px; line-height: 1.95;
+    line-break: strict; word-break: normal; overflow-wrap: break-word;
+  }
+  @media screen {
+    html { height: auto; display: flex; justify-content: center; background: #2b2b28; }
+    body { margin: 24px auto; box-shadow: 0 0 40px rgba(0,0,0,.4); }
+  }
+  p, td, li { text-align: justify; }
+  p { margin: 0 0 11px; }
+
+  /* ───────── جلد ───────── */
+  .cover {
+    page: cover;
+    width: 794px; height: 1123px; box-sizing: border-box;
+    break-after: page; position: relative; overflow: hidden;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 64px 72px;
+  }
+  .cover-bg {
+    position: absolute; inset: 0; z-index: 1;
+    background: radial-gradient(circle 600px at 14% 106%, rgba(0,0,0,0.035) 0 99.4%, rgba(0,0,0,0) 100%);
+  }
+  .cover-anchor { position: absolute; top: 56px; right: 64px; z-index: 1; opacity: .9; }
+  .cover-content { position: relative; z-index: 3; }
+  .cover-kicker { font-size: 15px; font-weight: 700; color: var(--accent); letter-spacing: 2px; margin-bottom: 18px; }
+  .cover-title { font-size: 74px; font-weight: 900; line-height: 1.12; margin-bottom: 8px; }
+  .cover-sub { font-size: 23px; font-weight: 700; color: var(--text); margin-bottom: 26px; }
+  .cover-summary {
+    font-size: 15.5px; color: var(--muted); line-height: 2; max-width: 62%;
+    text-align: justify; margin-bottom: 34px;
+  }
+  .cover-chips { display: flex; flex-wrap: wrap; gap: 9px; max-width: 100%; margin-bottom: 44px; }
+  .cover-chip {
+    flex: 0 1 auto; font-size: 13px; font-weight: 600; color: var(--accent);
+    border: 1.2px solid var(--accent); border-radius: 999px; padding: 4px 16px;
+  }
+  .cover-meta { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .cover-meta-sub { font-size: 13.5px; color: var(--muted); }
+  .cover-footer {
+    position: absolute; bottom: 54px; right: 72px; left: 72px; z-index: 3;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 12.5px; color: var(--muted);
+  }
+  .cover-footer .ltr { direction: ltr; unicode-bidi: embed; }
+
+  /* ───────── فهرست ───────── */
+  .toc-page { page: toc; padding: 70px 72px 40px; box-sizing: border-box; }
+  .toc-list { margin-top: 18px; }
+  .toc-item {
+    display: flex; align-items: baseline; gap: 8px;
+    padding: 9px 0; border-bottom: 1px dotted #c9c6bf;
+  }
+  .toc-item a { text-decoration: none; color: var(--text); font-weight: 600; font-size: 15.5px; }
+  .toc-item a::after { content: "  " target-counter(attr(href), page); color: var(--muted); font-weight: 500; }
+  .toc-num { color: var(--accent); font-weight: 800; min-width: 26px; }
+
+  /* ───────── بدنه ───────── */
+  .main-content { page: bodypage; padding: 0; box-sizing: border-box; }
+  .chapter-header { break-after: avoid; break-inside: avoid; margin-top: 22px; }
+  .section-tag { color: var(--accent); font-weight: 800; font-size: 13px; letter-spacing: 1px; }
+  h2 { font-size: 23px; font-weight: 900; margin: 2px 0 0; break-after: avoid; }
+  .divider { height: 2.5px; background: var(--accent); width: 66px; margin: 9px 0 14px; border-radius: 2px; }
+  h3 { font-size: 16.5px; font-weight: 800; margin: 16px 0 7px; break-after: avoid; }
+  h3 .sub { font-weight: 400; color: var(--muted); font-size: 13px; }
+
+  figure { break-inside: avoid; margin: 11px 0 13px; }
+  figure img {
+    display: block; width: 100%; max-width: 100%; max-height: 405px; height: auto;
+    object-fit: contain; border: 1px solid var(--border); border-radius: 10px;
+    background: #fff;
+  }
+  figcaption { font-size: 12.5px; color: var(--muted); margin-top: 7px; text-align: center; }
+  .fig-note { font-size: 12.5px; color: var(--muted); margin: -8px 0 14px; text-align: center; }
+
+  table { width: 100%; border-collapse: collapse; table-layout: fixed; break-inside: avoid;
+          font-size: 13px; margin: 10px 0 13px; background: #fff; }
+  thead { display: table-header-group; }
+  th { background: var(--header-fill); color: #fff; font-weight: 700; padding: 8px 11px;
+       text-align: right; font-size: 12.5px; }
+  th:first-child { border-radius: 0 8px 0 0; }
+  th:last-child { border-radius: 8px 0 0 0; }
+  td { border-bottom: 1px solid var(--border); padding: 7px 11px; vertical-align: top;
+       overflow-wrap: break-word; word-break: break-word; text-align: right; }
+  tbody tr:nth-child(odd) td { background: #f1f0ed; }
+  table.longtable { break-inside: auto; }
+  tr { break-inside: avoid; }
+  td.ltr, th.ltr { direction: ltr; text-align: left; }
+  .mono { font-family: 'DejaVu Sans Mono', monospace; font-size: 11.5px; }
+
+  pre {
+    direction: ltr; text-align: left; background: var(--card);
+    border: 1px solid var(--border); border-radius: 8px; padding: 11px 15px;
+    font-family: 'DejaVu Sans Mono', monospace; font-size: 11.5px; line-height: 1.7;
+    break-inside: avoid; overflow-wrap: break-word; white-space: pre-wrap; margin: 10px 0 14px;
+  }
+  .callout {
+    background: var(--card); border-inline-start: 3.5px solid var(--accent);
+    border-radius: 8px; padding: 12px 16px; break-inside: avoid;
+    margin: 12px 0 14px; font-size: 14px;
+  }
+  .callout b { color: var(--accent); }
+  ul { margin: 0 0 12px; padding-inline-start: 22px; }
+  li { margin-bottom: 5px; break-inside: avoid; }
+
+  /* ───────── صفحه پایانی ───────── */
+  .ending {
+    page: bodypage;
+    width: 794px; height: 1123px; box-sizing: border-box;
+    break-before: page; overflow: hidden; position: relative;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; padding: 80px 90px; gap: 18px;
+  }
+  .ending .big { font-size: 30px; font-weight: 900; line-height: 1.8; max-width: 560px; }
+  .ending .small { font-size: 14px; color: var(--muted); line-height: 2.1; }
+  .ending .rule { width: 66px; height: 2.5px; background: var(--accent); border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ جلد ═══════════ -->
+<div class="cover" dir="rtl">
+  <div class="cover-bg">
+    <svg class="cover-anchor" width="150" height="150" viewBox="0 0 150 150" fill="none">
+      <circle cx="70" cy="70" r="44" stroke="#88702a" stroke-width="0.6" opacity="0.15"/>
+      <circle cx="84" cy="78" r="44" stroke="#88702a" stroke-width="0.6" opacity="0.25"/>
+      <circle cx="98" cy="86" r="44" stroke="#88702a" stroke-width="0.6" opacity="0.4"/>
+      <circle cx="126" cy="38" r="5" fill="#88702a" opacity="0.5"/>
+    </svg>
+  </div>
+  <div class="cover-content">
+    <div class="cover-kicker">سند فنی و مستندات سامانه</div>
+    <div class="cover-title">فضایار۳۶۰</div>
+    <div class="cover-sub">سامانهٔ مدیریت و بهینه‌سازی فضاهای آموزشی</div>
+    <div class="cover-summary">
+      این سند، معماری، کارکردها، ملاحظات و نکات فنی نسخهٔ ۱.۰.۰ سامانهٔ فضایار۳۶۰ را تشریح می‌کند؛
+      زیرسیستمِ شناسنامهٔ فضا، رزرو بدون تعارض، تحلیل ظرفیت و بهینه‌سازی تخصیص در زیست‌بوم دانشجو۳۶۰.
+      در کنار هر بخش، تصویر واقعی صفحهٔ مربوطه از خود سامانه درج شده است.
+    </div>
+    <div class="cover-chips">
+      <span class="cover-chip">FastAPI</span>
+      <span class="cover-chip">PostgreSQL 16</span>
+      <span class="cover-chip">React 19 + TypeScript</span>
+      <span class="cover-chip">Docker</span>
+      <span class="cover-chip">نسخهٔ پرتیبل</span>
+      <span class="cover-chip">v1.0.0</span>
+    </div>
+    <div class="cover-meta">زیست‌بوم دانشجو۳۶۰</div>
+    <div class="cover-meta-sub">نگارش ۱.۰.۰ — آبان ۱۴۰۵ — سند فنی نسخهٔ منتشرشده در مخزن رسمی پروژه</div>
+  </div>
+  <div class="cover-footer">
+    <span>هستهٔ عملیاتی + آزمایشگاه + تحلیل + بهینه‌سازی</span>
+    <span class="ltr">github.com/hjalilvand2004-coder/fazayar360</span>
+  </div>
+</div>
+
+<!-- ═══════════ فهرست ═══════════ -->
+<div class="toc-page" dir="rtl">
+  <div class="section-tag">فهرست مطالب</div>
+  <h2 style="margin-top:2px;">آنچه در این سند می‌خوانید</h2>
+  <div class="divider"></div>
+  <div class="toc-list">
+    <div class="toc-item"><span class="toc-num">۱</span><a href="#sec1">مقدمه و جایگاه سامانه در زیست‌بوم دانشجو۳۶۰</a></div>
+    <div class="toc-item"><span class="toc-num">۲</span><a href="#sec2">معماری کلی و پشتهٔ فناوری</a></div>
+    <div class="toc-item"><span class="toc-num">۳</span><a href="#sec3">مدل داده و ساختار سازمانی</a></div>
+    <div class="toc-item"><span class="toc-num">۴</span><a href="#sec4">کارکردها و قابلیت‌های سامانه</a></div>
+    <div class="toc-item"><span class="toc-num">۵</span><a href="#sec5">امنیت، نقش‌ها و ممیزی</a></div>
+    <div class="toc-item"><span class="toc-num">۶</span><a href="#sec6">ملاحظات فنی</a></div>
+    <div class="toc-item"><span class="toc-num">۷</span><a href="#sec7">نکات فنی استقرار و عملیات</a></div>
+    <div class="toc-item"><span class="toc-num">۸</span><a href="#sec8">محدودیت‌های نسخهٔ حاضر و مسیر توسعه</a></div>
+  </div>
+  <div style="background:var(--card); border-radius:10px; padding:18px 22px; margin-top:34px; font-size:14px;">
+    <div style="font-weight:800; color:var(--accent); margin-bottom:8px;">شناسنامهٔ سند</div>
+    <table style="margin:0; font-size:13.5px;">
+      <tr><td style="border:none; background:none; width:34%; color:var(--muted);">نام پروژه</td><td style="border:none; background:none;">فضایار۳۶۰ (Fazayar360) — زیرسیستم مدیریت و بهینه‌سازی فضاهای آموزشی</td></tr>
+      <tr><td style="border:none; background:none; color:var(--muted);">نگارش</td><td style="border:none; background:none;">۱.۰.۰ — هستهٔ عملیاتی، آزمایشگاه، تحلیل و بهینه‌سازی</td></tr>
+      <tr><td style="border:none; background:none; color:var(--muted);">تاریخ تهیه</td><td style="border:none; background:none;">آبان ۱۴۰۵ (نوامبر ۲۰۲۶)</td></tr>
+      <tr><td style="border:none; background:none; color:var(--muted);">مخاطبان</td><td style="border:none; background:none;">تیم فنی، مدیران دانشگاه، کارفرما و تیم استقرار زیست‌بوم دانشجو۳۶۰</td></tr>
+      <tr><td style="border:none; background:none; color:var(--muted);">مخزن کد</td><td style="border:none; background:none;"><span class="mono ltr" style="direction:ltr; unicode-bidi:embed;">github.com/hjalilvand2004-coder/fazayar360</span> — ریلیز رسمی با تگ v1.0.0</td></tr>
+    </table>
+  </div>
+</div>
